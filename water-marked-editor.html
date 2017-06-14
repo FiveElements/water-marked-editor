@@ -1,0 +1,86 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<!--<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">-->
+
+<link rel="import" href="../paper-input/paper-textarea.html">
+
+<link rel="import" href="../marked-element/marked-element.html">
+<link rel="import" href="../prism-element/prism-highlighter.html">
+<link rel="import" href="../prism-element/prism-theme-default.html">
+
+
+<dom-module id="water-marked-editor">
+    <template>
+        <style>
+            :host {
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-flex;
+                @apply --layout-wrap;
+            }
+
+            .zoneContent {
+                display: block;
+                @apply --layout-horizontal;
+                @apply --layout-flex;
+                @apply --layout-wrap;
+            }
+
+            .contentInput {
+                @apply --layout-flex;
+            }
+
+            .contentPreview {
+                display: block;
+                background-color: var(--water-marked-editor-background-color, var(--google-grey-100));
+                margin-bottom: 10px;
+                @apply --layout-flex;
+            }
+
+            .markdown-html.custom p {
+                padding-left: 24px;
+            }
+
+
+        </style>
+        <!--<div class="zoneContent">-->
+            <div class="contentInput">
+                <slot id="content"></slot>
+            </div>
+
+            <marked-element class="contentPreview" markdown="[[value]]">
+                <div slot="markdown-html" class="markdown-html custom"></div>
+            </marked-element>
+        <!--</div>-->
+        <!--<div>-->
+            <!--<a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Syntax</a>-->
+        <!--</div>-->
+    </template>
+
+    <script>
+        /**
+         * `water-marked-editor`
+         * Water Polymer 2
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class WaterMarkedEditor extends Polymer.Element {
+            static get is() {
+                return 'water-marked-editor';
+            }
+
+            static get properties() {
+                return {
+                    value: {
+                        type: String
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(WaterMarkedEditor.is, WaterMarkedEditor);
+    </script>
+</dom-module>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>water-marked-editor demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../water-marked-editor.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic water-marked-editor demo</h3>
+      <demo-snippet>
+        <dom-bind id="demo">
+        <template>
+          <water-marked-editor value="[[description]]">
+            <paper-textarea class="flex" char-counter maxlength="1000" rows="20" required
+                            always-float-label
+                            label="Description"
+                            value="{{description}}"></paper-textarea>
+
+          </water-marked-editor>
+        </template>
+        </dom-bind>
+
+      </demo-snippet>
+        <script>
+            let demo = document.querySelector('#demo');
+            demo.description = `# Demo Markdown Syntax
+
+## Emphasis
+### Italic
+*This text will be italic*
+
+_This will also be italic_
+
+### Bold
+**This text will be bold**
+
+__This will also be bold__
+
+### Italic & Bold
+_You **can** combine them_
+
+## Lists
+### Unordered
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+
+### Ordered
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
+
+
+## Images
+
+## Links
+[GitHub water-marked-editor](http://github.com/FiveElements/water-marked-editor)
+
+## Blockquotes
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+
+`;
+        </script>
+
+    </div>
+  </body>
+</html>
