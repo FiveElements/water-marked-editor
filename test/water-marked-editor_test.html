@@ -10,40 +10,35 @@
     <script src="../../web-component-tester/browser.js"></script>
 
     <link rel="import" href="../water-marked-editor.html">
+
+    <link rel="import" href="../../paper-input/paper-textarea.html">
+
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <water-marked-editor></water-marked-editor>
+        <water-marked-editor value="I am using __markdown__.">
+          <paper-textarea  char-counter maxlength="1000" rows="20" required
+                           always-float-label
+                           label="Description"
+                           value="{{description}}"></paper-textarea>
+        </water-marked-editor>
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <water-marked-editor prop1="new-prop1"></water-marked-editor>
-      </template>
-    </test-fixture>
 
     <script>
       suite('water-marked-editor', function() {
 
         test('instantiating the element with default properties works', function() {
           var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'water-marked-editor');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello water-marked-editor!');
+          assert.equal(element.value, 'I am using __markdown__.');
+//          var elementShadowRoot = element.shadowRoot;
+//          var elementHeader = elementShadowRoot.querySelector('h2');
+//          assert.equal(elementHeader.innerHTML, 'Hello water-marked-editor!');
         });
 
-        test('setting a property on the element works', function() {
-          // Create a test fixture
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-        });
 
       });
     </script>

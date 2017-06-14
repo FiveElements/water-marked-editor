@@ -12,7 +12,9 @@
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../water-marked-editor.html">
 
-    <custom-style>
+      <link rel="import" href="../../paper-input/paper-textarea.html">
+
+      <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
       </style>
     </custom-style>
@@ -24,7 +26,7 @@
         <dom-bind id="demo">
         <template>
           <water-marked-editor value="[[description]]">
-            <paper-textarea class="flex" char-counter maxlength="1000" rows="20" required
+            <paper-textarea  char-counter maxlength="1000" rows="20" required
                             always-float-label
                             label="Description"
                             value="{{description}}"></paper-textarea>
